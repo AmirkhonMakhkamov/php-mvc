@@ -1,0 +1,30 @@
+RewriteEngine On
+
+# Redirect www to non-www
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# Force HTTPS
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Security: Deny access to sensitive files and directories.
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Security: Disable Directory Listing
+Options -Indexes
+DirectoryIndex index.php
+
+# URL Rewriting: Redirect all requests to index.php except for existing directories and files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ index.php [QSA,L]
+
+# Custom error pages
+ErrorDocument 404 ../app/Views/Errors/404.html
+ErrorDocument 401 ../app/Views/Errors/401.html
+ErrorDocument 403 ../app/Views/Errors/403.html
+ErrorDocument 500 ../app/Views/Errors/500.html

@@ -1,0 +1,32 @@
+{
+    "name": "mvc/app",
+    "description": "MVC APP",
+    "type": "library",
+    "license": "MIT",
+
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+
+    "authors": [
+        {
+            "name": "Amirkhon Makhkamov"
+        }
+    ],
+
+    "minimum-stability": "stable",
+
+    "require": {
+        "php": "^8.2",
+
+        "ext-pdo": "*",
+
+        "monolog/monolog": "^3.0",
+        "twig/twig": "^3.0",
+        "vlucas/phpdotenv": "^5.6",
+        "guzzlehttp/guzzle": "^7.4.5",
+        "sendgrid/sendgrid": "~7"
+    }
+}

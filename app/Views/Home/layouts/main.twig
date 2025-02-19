@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        [App title]
+        Author: [Your Name]
+        Date: [Current Date]
+        Description: [Description]
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My MVC Project{% endblock %}</title>
+</head>
+<body>
+{% include 'Home/partials/header.twig' %}
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+{% include 'Home/partials/footer.twig' %}
+</body>
+</html>
